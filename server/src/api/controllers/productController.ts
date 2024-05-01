@@ -1,6 +1,15 @@
 import Product from "../models/productModel";
 import { Request, Response } from 'express';
 
+export const viewAllProduct = async (req: Request, res:Response): Promise<void> => {
+    try {
+        const products = await Product.find();
+        res.status(200).json(products);
+    } catch (error) {
+        res.status(500).json({ message: "Error viewing Product!"})
+    }
+}
+
 export const addProduct = async (req: Request, res:Response): Promise<void> => {
     const { name, price, description } = req.body; //getting the data from the user
     try {
