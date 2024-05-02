@@ -39,6 +39,17 @@ The back-end includes RESTful APIs that provide the following functionalities:
 
 Ensure you have Node.js and npm installed on your machine. This will be needed to run the project locally.
 
+### Dev Dependencies
+
+- **typescript**: Adds static types to JavaScript
+- **@types/express, @types/mongoose, etc.**: Type definitions for Express, Mongoose, and other libraries
+- **nodemon**: Utility that automatically restarts node application when file changes
+- **ts-node**: TypeScript execution environment and REPL
+- **react**: A JavaScript library for building user interfaces
+- **axios**: Promise based HTTP client for the browser and node.js
+- **react-router-dom**: DOM bindings for React Router
+- **@testing-library/react**: Simple and complete testing utilities to interact with DOM nodes
+
 ### Installing
 
 Clone the repository to your local machine:
