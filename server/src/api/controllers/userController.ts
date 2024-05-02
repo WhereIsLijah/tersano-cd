@@ -1,6 +1,8 @@
 import User from "../models/userModel";
 import bcrypt from 'bcrypt';
 import { Request, Response } from 'express';
+import jwt from 'jsonwebtoken';
+
 
 export const signUp =  async (req: Request, res:Response): Promise<void> => {
     const { username, email, password, fullName, dateOfBirth } = req.body;
@@ -27,7 +29,14 @@ export const logIn = async (req: Request, res: Response): Promise<void> => {
     try {
         const user = await User.findOne({ email });
         if (user && await bcrypt.compare(password, user.password)) {
-            res.json({ message: "User logged in successfully!", userId: user._id });
+            // Here we generate the token
+            const token = jwt.sign(
+                { userId: user._id, email: user.email }, // Payload data
+                'your_secret_key', // Secret key for signing the token
+                { expiresIn: '1h' } // Options, setting the expiry to one hour
+            );
+
+            res.json({ message: "User logged in successfully!", token: token });
         } else {
             res.status(401).json({ message: "Authentication Failed!" });
         }
