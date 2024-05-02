@@ -29,11 +29,10 @@ export const logIn = async (req: Request, res: Response): Promise<void> => {
     try {
         const user = await User.findOne({ email });
         if (user && await bcrypt.compare(password, user.password)) {
-            // Here we generate the token
             const token = jwt.sign(
-                { userId: user._id, email: user.email }, // Payload data
-                'your_secret_key', // Secret key for signing the token
-                { expiresIn: '1h' } // Options, setting the expiry to one hour
+                { userId: user._id, email: user.email }, 
+                'your_secret_key', 
+                { expiresIn: '1h' } 
             );
 
             res.json({ message: "User logged in successfully!", token: token });

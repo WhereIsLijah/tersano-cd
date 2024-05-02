@@ -11,7 +11,7 @@ export const viewAllProduct = async (req: Request, res:Response): Promise<void> 
 }
 
 export const addProduct = async (req: Request, res:Response): Promise<void> => {
-    const { name, price, description } = req.body; //getting the data from the user
+    const { name, price, description } = req.body; 
     try {
         const product = new Product({
             name, 

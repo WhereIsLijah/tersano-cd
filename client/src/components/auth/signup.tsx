@@ -45,7 +45,7 @@ export default function Signup() {
         <>
             <form onSubmit={handleSubmit} className="signup-form">
                 <h1>Sign up for an account</h1>
-                {successMessage && <p className="success-message">{successMessage}</p>} {/* Render success message if exists */}
+                {successMessage && <p className="success-message">{successMessage}</p>} 
                 <input
                     type="text"
                     id="username"
