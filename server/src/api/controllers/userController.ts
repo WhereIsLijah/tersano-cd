@@ -3,13 +3,12 @@ import bcrypt from 'bcrypt';
 import { Request, Response } from 'express';
 
 export const signUp =  async (req: Request, res:Response): Promise<void> => {
-    const { username, email, password, fullName, dateOfBirth } = req.body;
+    const { email, password, fullName, dateOfBirth } = req.body;
     try {
         const saltRounds = 10;
         const hashedPassword = await bcrypt.hash(password, saltRounds);
 
         const user = new User({
-            username,
             email,
             password: hashedPassword,
             fullName,
