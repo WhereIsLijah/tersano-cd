@@ -28,7 +28,7 @@ export default function Login() {
             const data = await response.json();
             console.log(data);
         } catch (error) {
-            console.error('Error connecting to the backend:', error);
+            console.error('Error adding User!', error);
         }
     };
 
