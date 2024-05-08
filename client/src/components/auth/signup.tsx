@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
+  const navigate = useNavigate(); 
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -28,7 +30,9 @@ export default function Signup() {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
-      console.log(data);
+
+      setTimeout(() => navigate('/'), 100);
+
     } catch (error) {
       console.error("Error connecting to the backend:", error);
     }
